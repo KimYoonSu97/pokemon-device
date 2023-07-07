@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "signID": "test@test.test",
+      "nickname": "김지우",
+      "profileImg": "string",
+      "signDate": "23 .7 .6"
+    },
+    {
+      "id": 2,
+      "signID": "test2@test.test",
+      "nickname": "이슬이",
+      "profileImg": "string",
+      "signDate": "23 .7 .6"
+    }
+  ],
+  "likes": [
+    {
+      "id": 1,
+      "likeUser": [1]
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "comment": [
+        {
+          "id": 1,
+          "nickname": "이슬이",
+          "likeUser": [1]
+        }
+      ]
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
