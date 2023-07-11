@@ -3,12 +3,13 @@ import { styled } from "styled-components";
 import BackGround from "../components/BackGround";
 import Device from "../components/login/Device";
 
-const Login = () => {
+const UserSetting = () => {
   return (
     <>
       <STContainer>
         <STLogo></STLogo>
-        <Device state="login"></Device>
+        <Device state="setting"></Device>
+
         <StEmptyBox></StEmptyBox>
       </STContainer>
       <BackGround></BackGround>
@@ -16,7 +17,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default UserSetting;
 
 const STContainer = styled.div`
   width: 100vw;
