@@ -1,22 +1,28 @@
 {
   "diary": [
     {
-      "id": "9605f8b7-81c4-4edf-b6d4-213d8c7940c9",
-      "userId": 3,
-      "text": "일기를 쓰고있나요?",
-      "postDate": "2023-07-11"
-    },
-    {
       "id": "fe91b748-a488-9ea3-cb4a-c61bb0c6ccd1",
       "userId": 3,
-      "text": "새일기를 써봐요.",
+      "text": "새일기를 써봐요.ddddddffff",
       "postDate": "2023-07-11"
     },
     {
       "id": "-a488-9ea3-cb4a-c61bb",
       "userId": 3,
-      "text": "일기를 쓰고있나요? 수정",
+      "text": "일기를 쓰고있나요? 수정dddddd dfdfdf",
       "postDate": "2023-07-11"
+    },
+    {
+      "id": "4e355e8f-ab9e-cc58-5388-26de87d18e93",
+      "userId": 2,
+      "text": "dfdddd",
+      "postDate": "2023-07-12"
+    },
+    {
+      "id": "4e355e8f-ab9e-cc58-5388-26de87d18e93",
+      "userId": 3,
+      "text": "dfdddd",
+      "postDate": "2023-07-12"
     }
   ],
   "users": [
@@ -52,19 +58,6 @@
   "pokemons": [
     {
       "userId": 3,
-      "id": "83a50299-8875-1f08-71e8-1a76772a93c9",
-      "pokemonId": 614,
-      "name": "툰베어",
-      "flavorText": "북쪽의 차가운 바다를 좋아한다.\n입에서 내뿜는 숨을 얼려\n바다 위에 길을 만들어 걷는다.",
-      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/614.png",
-      "types": [
-        "얼음",
-        "동결포켓몬"
-      ],
-      "catchDate": "2023-07-11"
-    },
-    {
-      "userId": 3,
       "id": "a317053a-6435-6f1c-dbf6-084efbd847f4",
       "pokemonId": 551,
       "name": "깜눈크",
@@ -90,20 +83,7 @@
       "catchDate": "2023-07-11"
     },
     {
-      "userId": 3,
-      "id": "53a59d3e-389c-40d8-1948-57d1ad886789",
-      "pokemonId": 524,
-      "name": "단굴",
-      "flavorText": "육각형 귀를 가지고 있다.\n땅속 깊은 곳에서 압축된 몸은\n철 못지않게 단단하다.",
-      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/524.png",
-      "types": [
-        "바위",
-        "맨틀포켓몬"
-      ],
-      "catchDate": "2023-07-11"
-    },
-    {
-      "userId": 3,
+      "userId": 2,
       "id": "f52d043a-178f-0d53-e63d-9b305f26f6e3",
       "pokemonId": 550,
       "name": "배쓰나이",
@@ -116,7 +96,7 @@
       "catchDate": "2023-07-11"
     },
     {
-      "userId": 3,
+      "userId": 2,
       "id": "ef85543b-67ca-0890-cd7e-9225a8d9ea60",
       "pokemonId": 304,
       "name": "가보리",
@@ -129,7 +109,7 @@
       "catchDate": "2023-07-11"
     },
     {
-      "userId": 3,
+      "userId": 2,
       "id": "9d77fa85-b873-7d89-e165-398ecf63a3aa",
       "pokemonId": 40,
       "name": "푸크린",
@@ -142,7 +122,7 @@
       "catchDate": "2023-07-11"
     },
     {
-      "userId": 3,
+      "userId": 2,
       "id": "58d94245-e07a-99a2-e29d-34c34af3f8dc",
       "pokemonId": 561,
       "name": "심보러",
@@ -151,58 +131,6 @@
       "types": [
         "에스퍼",
         "흡사새포켓몬"
-      ],
-      "catchDate": "2023-07-11"
-    },
-    {
-      "userId": 3,
-      "id": "9977b7a4-1747-6099-29a4-b8c77d668ff2",
-      "pokemonId": 465,
-      "name": "덩쿠림보",
-      "flavorText": "식물의 덩굴로 이루어진 팔을\n늘여서 먹이를 포박한다.\n팔을 먹혀도 아무렇지도 않다.",
-      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/465.png",
-      "types": [
-        "풀",
-        "넝쿨포켓몬"
-      ],
-      "catchDate": "2023-07-11"
-    },
-    {
-      "userId": 3,
-      "id": "f7fa98ad-d439-0664-153d-428bba10f969",
-      "pokemonId": 529,
-      "name": "두더류",
-      "flavorText": "양손의 손톱을 서로 겹치고\n몸을 고속 회전시키면서\n맹렬한 속도로 땅속을 헤쳐나간다.",
-      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/529.png",
-      "types": [
-        "땅",
-        "두더지포켓몬"
-      ],
-      "catchDate": "2023-07-11"
-    },
-    {
-      "userId": 3,
-      "id": "182e5f39-ceb5-9db0-3038-62498fc3d519",
-      "pokemonId": 288,
-      "name": "발바로",
-      "flavorText": "심장 박동이 빨라 전신의\n피가 끓어오르고 있기 때문에\n1초도 가만히 있지 못한다.",
-      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/288.png",
-      "types": [
-        "노말",
-        "성난원숭이포켓몬"
-      ],
-      "catchDate": "2023-07-11"
-    },
-    {
-      "userId": 3,
-      "id": "991b3a8d-97ba-121e-a2ec-14bb0a1a1e24",
-      "pokemonId": 796,
-      "name": "전수목",
-      "flavorText": "온몸에서 엄청난 전격을\n내뿜는 광경이 목격되었다.\n수수께끼의 생물 UB 중 하나다.",
-      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/796.png",
-      "types": [
-        "전기",
-        "전기장식포켓몬"
       ],
       "catchDate": "2023-07-11"
     },
@@ -218,6 +146,123 @@
         "늪물고기포켓몬"
       ],
       "catchDate": "2023-07-11"
+    },
+    {
+      "userId": 3,
+      "id": "1a6b5bfb-f329-9ad6-fa1a-9c1286397538",
+      "pokemonId": 493,
+      "name": "아르세우스",
+      "flavorText": "알에서 모습을 나타내\n모든 세계를 창조했다고\n신오신화에서 묘사된다.",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/493.png",
+      "types": [
+        "노말",
+        "창조포켓몬"
+      ],
+      "catchDate": "2023-07-11"
+    },
+    {
+      "userId": 3,
+      "id": "720c630d-213e-7e00-9e69-2bd63b6d424c",
+      "pokemonId": 104,
+      "name": "탕구리",
+      "flavorText": "죽은 어미의 해골을\n머리에 쓰고 있다. 외로울 때는\n큰 소리로 운다고 한다.",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/104.png",
+      "types": [
+        "땅",
+        "고독포켓몬"
+      ],
+      "catchDate": "2023-07-11"
+    },
+    {
+      "userId": 3,
+      "id": "7839bc92-c9e8-7f56-370f-591f209a943d",
+      "pokemonId": 869,
+      "name": "마휘핑",
+      "flavorText": "믿을 수 있는 트레이너에게는\n크림으로 데코레이션한\n나무열매를 대접한다.",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/869.png",
+      "types": [
+        "페어리",
+        "크림포켓몬"
+      ],
+      "catchDate": "2023-07-11"
+    },
+    {
+      "userId": 3,
+      "id": "07805e5c-e26b-d41e-783c-ab438546d365",
+      "pokemonId": 449,
+      "name": "히포포타스",
+      "flavorText": "건조한 땅에서 산다.\n땀 대신 모래알을\n몸에서 분비하는 포켓몬이다.",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/449.png",
+      "types": [
+        "땅",
+        "하마포켓몬"
+      ],
+      "catchDate": "2023-07-11"
+    },
+    {
+      "userId": 3,
+      "id": "518b55e9-69ea-b523-0d2b-753ad65a3e46",
+      "pokemonId": 433,
+      "name": "랑딸랑",
+      "flavorText": "뛸 때마다 딸랑딸랑 소리를 낸다.\n높은 주파수의 울음소리로\n상대의 귀를 들리지 않게 한다.",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/433.png",
+      "types": [
+        "에스퍼",
+        "방울포켓몬"
+      ],
+      "catchDate": "2023-07-12"
+    },
+    {
+      "userId": 3,
+      "id": "0421b203-2c87-431f-e00a-ea0fadd330b3",
+      "pokemonId": 891,
+      "name": "치고마",
+      "flavorText": "혹독한 수련을 거듭하며 기술을\n갈고닦는다. 체득한 기술에 따라\n진화했을 때의 모습이 달라진다.",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/891.png",
+      "types": [
+        "격투",
+        "권법포켓몬"
+      ],
+      "catchDate": "2023-07-12"
+    },
+    {
+      "userId": 3,
+      "id": "99b794d8-d024-90e3-81f1-fb5e6a7834a6",
+      "pokemonId": 183,
+      "name": "마릴",
+      "flavorText": "전신의 털은\n물을 튕겨내는 성질을 지녀\n물을 끼얹어도 말라 있다.",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/183.png",
+      "types": [
+        "물",
+        "물쥐포켓몬"
+      ],
+      "catchDate": "2023-07-12"
+    },
+    {
+      "userId": 3,
+      "id": "4f09e934-0d34-5d69-3497-11bf16b42198",
+      "pokemonId": 211,
+      "name": "침바루",
+      "flavorText": "전신의 독침을 날리기 위해\n10리터의 물을 단번에\n마시고 몸을 부풀린다.",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/211.png",
+      "types": [
+        "물",
+        "풍선포켓몬"
+      ],
+      "catchDate": "2023-07-12"
+    },
+    {
+      "userId": 3,
+      "id": "223b3e44-7e23-fa5a-d6d9-5e89e8a43b18",
+      "pokemonId": 696,
+      "name": "티고라스",
+      "flavorText": "화석에서 부활한 포켓몬이다.\n마음에 들지 않는 일이 있으면\n짜증을 내며 난동을 부린다.",
+      "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/696.png",
+      "types": [
+        "바위",
+        "유군포켓몬"
+      ],
+      "catchDate": "2023-07-12"
     }
   ]
 }

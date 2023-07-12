@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ConfirmModal from "../modal/ConfirmModal";
 import CommentInputForm from "./CommentInputForm";
 
 const CommentCard = ({ diary }) => {
-  const diarys = useSelector((state) => state.diaryReducer);
+  const { diarys, loginUserId } = useSelector((state) => ({
+    diarys: state.diaryReducer,
+    loginUserId: state.loginUserReducer.id,
+  }));
 
   const [isOpen, setIsOpen] = useState(false);
   const [editIsOpen, setEditIsOpen] = useState(false);
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setEditIsOpen(false);
@@ -30,22 +31,26 @@ const CommentCard = ({ diary }) => {
           <CommentDate>{diary.postDate}</CommentDate>
           <CommentText>{diary.text}</CommentText>
         </div>
-        <STBtnArea>
-          <TextBtn
-            onClick={() => {
-              setIsOpen(true);
-            }}
-          >
-            Del
-          </TextBtn>
-          <TextBtn
-            onClick={() => {
-              setEditIsOpen(true);
-            }}
-          >
-            Edit
-          </TextBtn>
-        </STBtnArea>
+        {diary.userId === loginUserId ? (
+          <STBtnArea>
+            <TextBtn
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              Del
+            </TextBtn>
+            <TextBtn
+              onClick={() => {
+                setEditIsOpen(true);
+              }}
+            >
+              Edit
+            </TextBtn>
+          </STBtnArea>
+        ) : (
+          ""
+        )}
       </CommentBox>
     </>
   );
@@ -62,12 +67,6 @@ const CommentBox = styled.div`
   gap: 20px;
   padding: 0px 10px;
   background-color: white;
-`;
-
-const CommentUserImgBox = styled.div`
-  width: 50px;
-  height: 50px;
-  border: 3px solid black;
 `;
 
 const CommentDate = styled.p`

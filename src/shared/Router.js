@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Mydoc from "../pages/Mydoc";
 import GlobalModal from "../components/modal/GlobalModal";
 import Test from "../Test";
+import UserRank from "../pages/UserRank";
+import { QueryClientProvider, useQueryClient, QueryClient } from "react-query";
 
 const Router = () => {
   return (
@@ -12,7 +14,8 @@ const Router = () => {
         {/* <Route path="/signup" element={<SignUp />}></Route> */}
         {/* <Route path="/user" element={<UserSetting />}></Route> */}
         <Route path="/" element={<Mydoc />}></Route>
-        {/* <Route path="/trainer" element={<UserRank />}></Route> */}
+        <Route path="/:id" element={<Mydoc />}></Route>
+        <Route path="/trainer" element={<UserRank />}></Route>
         {/* <Route path="/doc/:id" element={<AnotherUserDoc />}></Route> */}
       </Routes>
     </BrowserRouter>

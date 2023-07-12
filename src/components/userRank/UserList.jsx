@@ -1,13 +1,25 @@
 import React from "react";
 import UserCard from "./UserCard";
 import { styled } from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useQuery, useQueryClient } from "react-query";
+import { allUserData } from "../../api/allUserData";
 
 const UserList = () => {
-  const navigate = useNavigate();
+  const { alluser, loginUserId } = useSelector((state) => ({
+    alluser: state.allUserReducer,
+    loginUserId: state.loginUserReducer.id,
+  }));
+
   return (
     <Inner>
-      <UserCard>{/* <Link to={`/doc/${user.id}`}></Link> */}</UserCard>
+      {alluser
+        .filter((item) => {
+          return item.id !== loginUserId;
+        })
+        .map((user) => {
+          return <UserCard key={user.id} user={user}></UserCard>;
+        })}
     </Inner>
   );
 };

@@ -5,10 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addDiary, updateDiary } from "../../redux/modules/diarySlice";
 import { getDate } from "../../fucntions/getDate";
+import useInput from "../../hooks/useInput";
 
 const CommentInputForm = ({ editDiary }) => {
+  const [diary, diaryHandler, setDiary] = useInput();
+
   const dispatch = useDispatch();
-  const [diary, setDiary] = useState("");
+  // const [diary, setDiary] = useState("");
   const { userId } = useSelector((state) => ({
     userId: state.userReducer.id,
   }));
@@ -55,9 +58,7 @@ const CommentInputForm = ({ editDiary }) => {
       <CommentText
         type="text"
         value={diary}
-        onChange={(e) => {
-          setDiary(e.target.value);
-        }}
+        onChange={diaryHandler}
       ></CommentText>
       <TextBtn type="submit">{text()}</TextBtn>
     </CommentBox>
