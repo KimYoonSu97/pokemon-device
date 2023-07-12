@@ -3,7 +3,6 @@ import DetailModal from "./DetailModal";
 import CatchModal from "./CatchModal";
 import { useSelector } from "react-redux";
 import { selectModal } from "../../redux/modules/modalSlice";
-import { STModalBackColor } from "./Modal.styled";
 
 const MODAL_TYPES = {
   DetailModal: "DetailModal",

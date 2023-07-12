@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { styled } from "styled-components";
 import PokemonCard from "./PokemonCard";
-import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "../../redux/modules/modalSlice";
-import axios from "axios";
+import { useSelector } from "react-redux";
 
 const PokemonList = () => {
   const pokemons = useSelector((state) => state.pokemonReducer);

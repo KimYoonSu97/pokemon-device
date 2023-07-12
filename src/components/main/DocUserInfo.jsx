@@ -55,14 +55,11 @@ const ProfileTextBox = styled.div`
   width: 350px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
 `;
 
 const ProfileText = styled.p`
   font-size: 24px;
   color: white;
   flex-grow: 1;
-  /* vertical-align: middle; */
   line-height: 45px;
 `;

@@ -2,8 +2,6 @@ import React from "react";
 import UserCard from "./UserCard";
 import { styled } from "styled-components";
 import { useSelector } from "react-redux";
-import { useQuery, useQueryClient } from "react-query";
-import { allUserData } from "../../api/allUserData";
 
 const UserList = () => {
   const { alluser, loginUserId } = useSelector((state) => ({

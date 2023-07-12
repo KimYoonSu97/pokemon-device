@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { STModalBackColor, STModalContainer, STModalBox } from "./Modal.styled";
+import { STModalBackColor, STModalBox } from "./Modal.styled";
 import { styled } from "styled-components";
 import { PokemonBox, PokemonImgBox, PokemonInfoBox } from "../main/PokemonCard";
 import { Btn } from "../btn.styled";

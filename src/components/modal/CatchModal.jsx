@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { STModalBackColor, STModalBox } from "./Modal.styled";
 import { styled } from "styled-components";
 import { PokemonBox, PokemonImgBox, PokemonInfoBox } from "../main/PokemonCard";
@@ -153,10 +153,6 @@ const PokemonNickname = styled.input`
   border: 3px solid black;
   box-sizing: border-box;
   outline: none;
-`;
-
-const PokemonComment = styled(PokemonNickname)`
-  width: 464px;
 `;
 
 const BtnArea = styled.div`

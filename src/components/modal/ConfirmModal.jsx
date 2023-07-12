@@ -1,5 +1,5 @@
 import React from "react";
-import { STModalBackColor, STModalContainer, STModalBox } from "./Modal.styled";
+import { STModalBox } from "./Modal.styled";
 import { styled } from "styled-components";
 import { Btn } from "../btn.styled";
 import { useDispatch } from "react-redux";

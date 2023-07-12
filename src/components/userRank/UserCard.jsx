@@ -75,7 +75,3 @@ const Nickname = styled.p`
   /* text-align: center; */
   line-height: 1.2;
 `;
-const PercentText = styled.p`
-  font-size: 50px;
-  color: white;
-`;
