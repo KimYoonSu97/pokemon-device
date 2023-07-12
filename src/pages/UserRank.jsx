@@ -11,7 +11,9 @@ const UserRank = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const getAllUser = async () => {
-    const { data } = await axios.get("http://localhost:4000/users");
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_AXIOS_URL}/users`
+    );
     dispatch(setAllUser(data));
   };
   useEffect(() => {
@@ -43,7 +45,6 @@ const STInner = styled.div`
   padding-top: 120px;
   margin: 0 auto;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
 `;
@@ -58,10 +59,4 @@ const STLogo = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
-`;
-const STBtnArea = styled.div`
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
 `;

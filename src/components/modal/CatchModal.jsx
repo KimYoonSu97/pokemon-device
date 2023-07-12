@@ -18,8 +18,7 @@ const CatchModal = () => {
     userId: state.userReducer.id,
   }));
   const [isOpen, setIsOpen] = useState(false);
-  console.log(userId);
-  console.log(pokemon);
+
   const { pokemonId, types, imgUrl, flavorText, name, catchDate } = pokemon;
 
   const catchPokemonBtnHandler = async () => {
@@ -29,7 +28,10 @@ const CatchModal = () => {
       ...pokemon,
     };
     try {
-      await axios.post("http://localhost:4000/pokemons", newPokemon);
+      await axios.post(
+        `${process.env.REACT_APP_AXIOS_URL}/pokemons`,
+        newPokemon
+      );
       dispatch(catchPokemon(newPokemon));
       dispatch(closeModal());
     } catch (error) {}
@@ -140,19 +142,6 @@ const InputBox = styled.div`
   align-items: center;
   gap: 26px;
   padding: 30px 0;
-`;
-
-const PokemonNickname = styled.input`
-  width: 250px;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 18px;
-  border: 3px solid black;
-  box-sizing: border-box;
-  outline: none;
 `;
 
 const BtnArea = styled.div`

@@ -35,28 +35,27 @@ const Mydoc = () => {
         })
       );
     } else {
-      console.log("포켓몬api오류로 다시가져오겠음");
       CatchModalHandler();
     }
   };
 
   const getUserData = async (userId) => {
     const { data } = await axios.get(
-      `http://localhost:4000/users?id=${userId}`
+      `${process.env.REACT_APP_AXIOS_URL}/users?id=${userId}`
     );
     dispatch(setCurrentUser(...data));
   };
 
   const getPokemonsData = async (userId) => {
     const { data } = await axios.get(
-      `http://localhost:4000/pokemons?userId=${userId}`
+      `${process.env.REACT_APP_AXIOS_URL}/pokemons?userId=${userId}`
     );
     dispatch(setPokemons(data));
   };
 
   const getDiaryData = async (userId) => {
     const { data } = await axios.get(
-      `http://localhost:4000/diary?userId=${userId}`
+      `${process.env.REACT_APP_AXIOS_URL}/diary?userId=${userId}`
     );
     dispatch(setDiary(data));
   };

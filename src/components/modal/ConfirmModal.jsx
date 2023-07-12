@@ -40,11 +40,13 @@ const ConfirmModal = ({ setIsOpen, pokemonId, diaryId }) => {
               if (pokemonId) {
                 dispatch(releasePokemon(pokemonId));
                 await axios.delete(
-                  `http://localhost:4000/pokemons/${pokemonId}`
+                  `${process.env.REACT_APP_AXIOS_URL}/pokemons/${pokemonId}`
                 );
               } else if (diaryId) {
                 dispatch(deleteDiary(diaryId));
-                await axios.delete(`http://localhost:4000/diary/${diaryId}`);
+                await axios.delete(
+                  `${process.env.REACT_APP_AXIOS_URL}/diary/${diaryId}`
+                );
               }
               dispatch(closeModal());
             }}

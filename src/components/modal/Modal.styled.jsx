@@ -4,10 +4,8 @@ export const STModalBackColor = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  /* background-color: #d31c29; */
   position: fixed;
   top: 0;
-  /* z-index: 1; */
 `;
 
 export const STModalContainer = styled.div`

@@ -142,23 +142,6 @@ const InputBox = styled.div`
   padding: 30px 0;
 `;
 
-const PokemonNickname = styled.input`
-  width: 250px;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 18px;
-  border: 3px solid black;
-  box-sizing: border-box;
-  outline: none;
-`;
-
-const PokemonComment = styled(PokemonNickname)`
-  width: 464px;
-`;
-
 const BtnArea = styled.div`
   display: flex;
   justify-content: center;

@@ -79,6 +79,7 @@ ruby,
 section,
 summary,
 time,
+button,
 mark,
 audio,
 video {

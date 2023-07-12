@@ -58,8 +58,6 @@ const ProfileTextBox = styled.div`
 const ProfileText = styled.p`
   font-size: 20px;
   margin-top: 10px;
-  /* flex-grow: 1; */
-  /* line-height: 40px; */
 `;
 
 const ProfileImg = styled.img`
@@ -71,7 +69,5 @@ const ProfileImg = styled.img`
 
 const Nickname = styled.p`
   font-size: 32px;
-  /* color: white; */
-  /* text-align: center; */
   line-height: 1.2;
 `;

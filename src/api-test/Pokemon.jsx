@@ -19,7 +19,6 @@ const getPokemonImgAndTypes = async (num) => {
 
 export const dataFetch = async (prevNum) => {
   const num = randomNum(prevNum);
-  console.log(num);
   try {
     const pokemon = await axios
       .all([getPokemonInfo(num), getPokemonImgAndTypes(num)])
@@ -62,7 +61,7 @@ export const dataFetch = async (prevNum) => {
                       return item.name;
                     }
                   });
-                  console.log(type);
+
                   return type;
                 }
               };
@@ -71,7 +70,6 @@ export const dataFetch = async (prevNum) => {
                 types.push(item.name);
               });
               types.push(genus);
-              console.log(types);
 
               const newPokemon = {
                 pokemonId: num,
@@ -82,11 +80,8 @@ export const dataFetch = async (prevNum) => {
                 catchDate: getDate(),
               };
 
-              console.log(newPokemon);
               return newPokemon;
             } else {
-              console.log(" axios 내부 데이터 요청 실패");
-              // dataFetch();
             }
           };
           const pokemon = getPokemon();
@@ -95,7 +90,6 @@ export const dataFetch = async (prevNum) => {
       );
     return pokemon;
   } catch (error) {
-    console.log("axios 외부데이터 요청 실패");
     dataFetch();
   }
 };

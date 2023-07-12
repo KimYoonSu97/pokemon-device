@@ -26,7 +26,6 @@ const STBackColor = styled.div`
         return `#d31c29`;
     }
   }};
-  /* background-color: #d31c29; */
   position: fixed;
   top: 0;
   z-index: -999;
@@ -44,7 +43,6 @@ const STMosterBallContainer = styled.div`
   }};
   height: 360px;
   position: fixed;
-  /* top: calc(100vh / 2 - 180px); */
   top: ${(props) => {
     switch (props.page) {
       case "doc":
@@ -63,7 +61,6 @@ const STMosterBallContainer = styled.div`
         return `calc((100vw - (100vw * 0.7)) / 2)`;
     }
   }};
-  /* left: calc((100vw - (100vw * 0.7)) / 2); */
   display: flex;
   justify-content: space-between;
   z-index: -998;
