@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BackGround from "../components/BackGround";
 import { styled } from "styled-components";
 import DocUserInfo from "../components/main/DocUserInfo";
@@ -7,19 +7,33 @@ import { Btn } from "../components/btn.styled";
 import CommentList from "../components/main/CommentList";
 import UserList from "../components/userRank/UserList";
 import { useNavigate } from "react-router-dom";
+import axios, { all } from "axios";
+import { useDispatch } from "react-redux";
+import { setAllUser } from "../redux/modules/allUserSlice";
 
 const UserRank = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const getAllUser = async () => {
+    const { data } = await axios.get("http://localhost:4000/users");
+    dispatch(setAllUser(data));
+  };
+  useEffect(() => {
+    const fetchDatas = async () => {
+      await getAllUser();
+    };
+    fetchDatas();
+  }, []);
 
   return (
     <>
       <STLogo
         onClick={() => {
-          navigate("/mydoc");
+          navigate("/");
         }}
       ></STLogo>
       <STInner>
-        <UserList></UserList>
+        <UserList></UserList>;
       </STInner>
       <BackGround page="doc"></BackGround>
     </>

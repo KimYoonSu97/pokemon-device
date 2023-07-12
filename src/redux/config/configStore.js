@@ -4,6 +4,8 @@ import pokemonReducer from "../modules/pokemonSlice";
 import userReducer from "../modules/userSlice";
 import diaryReducer from "../modules/diarySlice";
 import pokemonCatchReducer from "../modules/pokemonCatchSlice";
+import allUserReducer from "../modules/allUserSlice";
+import loginUserReducer from "../modules/loginUserSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +14,8 @@ const store = configureStore({
     userReducer,
     diaryReducer,
     pokemonCatchReducer,
+    allUserReducer,
+    loginUserReducer,
   },
 });
 

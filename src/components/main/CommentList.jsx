@@ -5,14 +5,23 @@ import { styled } from "styled-components";
 import { useSelector } from "react-redux";
 
 const CommentList = () => {
-  const diarys = useSelector((state) => state.diaryReducer);
+  const { diarys, loginUserId } = useSelector((state) => ({
+    diarys: state.diaryReducer,
+    loginUserId: state.loginUserReducer.id,
+  }));
 
   return (
     <Inner>
-      <Title>일기쓰기</Title>
-      <CommentInputForm></CommentInputForm>
+      {diarys[0]?.userId === loginUserId ? (
+        <>
+          <Title>일기쓰기</Title>
+          <CommentInputForm></CommentInputForm>
+        </>
+      ) : (
+        ""
+      )}
       <Title>지난 일기</Title>
-      {diarys.map((diary) => {
+      {diarys?.map((diary) => {
         return <CommentCard key={diary.id} diary={diary}></CommentCard>;
       })}
       <EmptyBox></EmptyBox>

@@ -9,7 +9,10 @@ import { getDayCount } from "../../fucntions/getDate";
 import { closeModal } from "../../redux/modules/modalSlice";
 
 const DetailModal = () => {
-  const pokemon = useSelector((state) => state.pokemonCatchReducer);
+  const { pokemon, userId } = useSelector((state) => ({
+    pokemon: state.pokemonCatchReducer,
+    userId: state.loginUserReducer.id,
+  }));
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   return (
@@ -56,14 +59,18 @@ const DetailModal = () => {
         </PokemonInfoSection>
         <InputBox></InputBox>
         <BtnArea>
-          <Btn
-            state="red"
-            onClick={() => {
-              setIsOpen(true);
-            }}
-          >
-            놓아주기
-          </Btn>
+          {pokemon.userId === userId ? (
+            <Btn
+              state="red"
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              놓아주기
+            </Btn>
+          ) : (
+            ""
+          )}
           <Btn
             state="disable"
             onClick={() => {

@@ -11,7 +11,6 @@ function App() {
       <GlobalStyle />
       <Provider store={store}>
         <GlobalModal />
-
         <Router />
       </Provider>
     </>

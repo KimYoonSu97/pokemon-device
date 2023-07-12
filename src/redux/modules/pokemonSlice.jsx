@@ -17,9 +17,7 @@ const pokemonSlice = createSlice({
   initialState,
   reducers: {
     setPokemons: (state, action) => {
-      action.payload.map((item) => {
-        state.push(item);
-      });
+      return [...action.payload];
     },
     catchPokemon: (state, action) => {
       state.push(action.payload);
