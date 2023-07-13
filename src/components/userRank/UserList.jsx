@@ -1,17 +1,25 @@
 import React from "react";
 import UserCard from "./UserCard";
 import { styled } from "styled-components";
-import { useSelector } from "react-redux";
+import { useQuery } from "react-query";
+import { getAllUser } from "../../api/fetchData";
+import useLoginUserId from "../../hooks/useGetUserId";
 
 const UserList = () => {
-  const { alluser, loginUserId } = useSelector((state) => ({
-    alluser: state.allUserReducer,
-    loginUserId: state.loginUserReducer.id,
-  }));
+  const { loginUserId } = useLoginUserId();
+
+  const { isLoading, isError, data } = useQuery("allUsers", getAllUser);
+
+  if (isLoading) {
+    return <p>로딩중</p>;
+  }
+  if (isError) {
+    return <p>에러남.. 새로고침 하세요..</p>;
+  }
 
   return (
     <Inner>
-      {alluser
+      {data.data
         .filter((item) => {
           return item.id !== loginUserId;
         })

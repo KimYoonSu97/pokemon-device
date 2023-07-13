@@ -1,39 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
 import BackGround from "../components/BackGround";
 import { styled } from "styled-components";
 import UserList from "../components/userRank/UserList";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { setAllUser } from "../redux/modules/allUserSlice";
+import useTokenCheck from "../hooks/useCheckToken";
 
 const UserRank = () => {
+  const { tokenChecker } = useTokenCheck();
+
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const getAllUser = async () => {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_AXIOS_URL}/users`
-    );
-    dispatch(setAllUser(data));
+  const returnMydoc = () => {
+    navigate("/doc");
   };
-  useEffect(() => {
-    const fetchDatas = async () => {
-      await getAllUser();
-    };
-    fetchDatas();
-  }, []);
 
   return (
     <>
-      <STLogo
-        onClick={() => {
-          navigate("/");
-        }}
-      ></STLogo>
+      <STLogo onClick={returnMydoc}></STLogo>
       <STInner>
-        <UserList></UserList>;
+        <UserList></UserList>
       </STInner>
-      <BackGround page="doc"></BackGround>
+      <BackGround point="doc"></BackGround>
     </>
   );
 };

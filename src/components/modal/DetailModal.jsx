@@ -5,13 +5,15 @@ import { PokemonBox, PokemonImgBox, PokemonInfoBox } from "../main/PokemonCard";
 import { Btn } from "../btn.styled";
 import ConfirmModal from "./ConfirmModal";
 import { useDispatch, useSelector } from "react-redux";
-import { getDayCount } from "../../fucntions/getDate";
+import { getDayCount } from "../../function/getDate";
 import { closeModal } from "../../redux/modules/modalSlice";
+import useLoginUserId from "../../hooks/useGetUserId";
 
 const DetailModal = () => {
-  const { pokemon, userId } = useSelector((state) => ({
+  const { loginUserId } = useLoginUserId();
+
+  const { pokemon } = useSelector((state) => ({
     pokemon: state.pokemonCatchReducer,
-    userId: state.loginUserReducer.id,
   }));
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
@@ -39,27 +41,27 @@ const DetailModal = () => {
           <ProfileTextBox>
             <ProfileText>
               <ProfileTextTitle>타 입 :</ProfileTextTitle>
-              <ProfileTextbody>
+              <ProfileTextBody>
                 {pokemon.types.map((item) => {
                   return <TypeText key={item}>{item}</TypeText>;
                 })}
-              </ProfileTextbody>
+              </ProfileTextBody>
             </ProfileText>
             <ProfileText>
               <ProfileTextTitle>함 께 :</ProfileTextTitle>
-              <ProfileTextbody>
+              <ProfileTextBody>
                 {getDayCount(pokemon.catchDate)}일째 ({pokemon.catchDate})
-              </ProfileTextbody>
+              </ProfileTextBody>
             </ProfileText>
             <ProfileText>
               <ProfileTextTitle>특 징 :</ProfileTextTitle>
-              <ProfileTextbody>{pokemon.flavorText}</ProfileTextbody>
+              <ProfileTextBody>{pokemon.flavorText}</ProfileTextBody>
             </ProfileText>
           </ProfileTextBox>
         </PokemonInfoSection>
         <InputBox></InputBox>
         <BtnArea>
-          {pokemon.userId === userId ? (
+          {pokemon.userId === loginUserId ? (
             <Btn
               state="red"
               onClick={() => {
@@ -127,7 +129,7 @@ const ProfileTextTitle = styled.p`
   display: block;
   /* display: inline; */
 `;
-const ProfileTextbody = styled.div`
+const ProfileTextBody = styled.div`
   width: 370px;
   line-height: 1.5;
   font-size: 18px;

@@ -3,22 +3,20 @@ import { styled } from "styled-components";
 import { useSelector } from "react-redux";
 import ConfirmModal from "../modal/ConfirmModal";
 import CommentInputForm from "./CommentInputForm";
+import useLoginUserId from "../../hooks/useGetUserId";
 
 const CommentCard = ({ diary }) => {
-  const { diarys, loginUserId } = useSelector((state) => ({
-    diarys: state.diaryReducer,
-    loginUserId: state.loginUserReducer.id,
-  }));
+  const { loginUserId } = useLoginUserId();
 
   const [isOpen, setIsOpen] = useState(false);
   const [editIsOpen, setEditIsOpen] = useState(false);
 
   useEffect(() => {
     setEditIsOpen(false);
-  }, [diarys]);
+  }, [diary]);
 
   if (editIsOpen) {
-    return <CommentInputForm editDiary={diary}></CommentInputForm>;
+    return <CommentInputForm editingDiary={diary}></CommentInputForm>;
   }
 
   return (

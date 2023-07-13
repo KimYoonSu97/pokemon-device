@@ -1,58 +1,69 @@
 import React, { useEffect, useState } from "react";
 import uuid from "react-uuid";
 import { styled } from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { addDiary, updateDiary } from "../../redux/modules/diarySlice";
-import { getDate } from "../../fucntions/getDate";
+import { getDate } from "../../function/getDate";
 import useInput from "../../hooks/useInput";
+import { useQueryClient, useMutation } from "react-query";
+import useLoginUserId from "../../hooks/useGetUserId";
+import { postDiary, editDiary } from "../../api/fetchData";
 
-const CommentInputForm = ({ editDiary }) => {
+const CommentInputForm = ({ editingDiary }) => {
+  const { loginUserId } = useLoginUserId();
+  const queryClient = useQueryClient();
+  const post = useMutation(postDiary, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("getDiaryData");
+    },
+  });
+  const edit = useMutation(editDiary, {
+    onSuccess: () => {
+      console.log("완료");
+      queryClient.invalidateQueries("getDiaryData");
+    },
+  });
+
   const [diary, diaryHandler, setDiary] = useInput();
-  const dispatch = useDispatch();
-  const { userId } = useSelector((state) => ({
-    userId: state.userReducer.id,
-  }));
 
   useEffect(() => {
-    if (editDiary) {
-      setDiary(editDiary.text);
+    if (editingDiary) {
+      setDiary(editingDiary.text);
     }
   }, []);
 
   const PostDiary = async () => {
-    let newDiary = {
-      id: editDiary ? editDiary.id : uuid(),
-      userId: editDiary ? editDiary.userId : userId,
+    const newDiary = {
+      id: editingDiary ? editingDiary.id : uuid(),
+      userId: editingDiary ? editingDiary.userId : loginUserId,
       text: diary,
-      postDate: editDiary ? editDiary.postDate : getDate(),
+      postDate: editingDiary ? editingDiary.postDate : getDate(),
     };
-    if (editDiary) {
-      if (editDiary?.text === diary) {
+    if (editingDiary) {
+      if (editingDiary?.text === diary) {
         alert("변경할 내용을 입력하세요.");
         return;
       }
-      dispatch(updateDiary(newDiary));
-      await axios.put(
-        `${process.env.REACT_APP_AXIOS_URL}/diary/${editDiary.id}`,
-        newDiary
-      );
+      console.log(editingDiary.id);
+      const requestData = {
+        editDiary: newDiary,
+        id: editingDiary.id,
+      };
+
+      edit.mutate(requestData);
     } else {
-      dispatch(addDiary(newDiary));
       setDiary("");
-      await axios.post(`${process.env.REACT_APP_AXIOS_URL}/diary`, newDiary);
+      post.mutate(newDiary);
     }
   };
   const textChanger = () => {
-    if (editDiary) {
+    if (editingDiary) {
       return "EDIT";
     } else {
       return "POST";
     }
   };
   const BtnChanger = () => {
-    if (editDiary) {
-      if (editDiary.text === diary) {
+    if (editingDiary) {
+      if (editingDiary.text === diary) {
         return <FakeBtn>{textChanger()}</FakeBtn>;
       } else if (diary.length < 10) {
         return <FakeBtn>{textChanger()}</FakeBtn>;

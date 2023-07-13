@@ -5,36 +5,52 @@ import { PokemonBox, PokemonImgBox, PokemonInfoBox } from "../main/PokemonCard";
 import { Btn } from "../btn.styled";
 import { useDispatch, useSelector } from "react-redux";
 import ConfirmModal from "./ConfirmModal";
-import axios from "axios";
 import { closeModal } from "../../redux/modules/modalSlice";
 import uuid from "react-uuid";
-import { catchPokemon } from "../../redux/modules/pokemonSlice";
+import useLoginUserId from "../../hooks/useGetUserId";
+import { useQuery, useQueryClient } from "react-query";
+import { catchRandomPokemon, savePokemon } from "../../api/fetchPokemon";
+import { useMutation } from "react-query";
 
 const CatchModal = () => {
+  const queryClient = useQueryClient();
   const dispatch = useDispatch();
-
-  const { pokemon, userId } = useSelector((state) => ({
-    pokemon: state.pokemonCatchReducer,
-    userId: state.userReducer.id,
-  }));
+  const { loginUserId } = useLoginUserId();
   const [isOpen, setIsOpen] = useState(false);
 
-  const { pokemonId, types, imgUrl, flavorText, name, catchDate } = pokemon;
+  const { isFetching, isLoading, isError, data } = useQuery(
+    "catchPokemon",
+    catchRandomPokemon
+  );
+  const mutation = useMutation(savePokemon, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("getPokemonsData");
+    },
+  });
+
+  if (isFetching) {
+    return <p>로딩중</p>;
+  }
+
+  if (isLoading) {
+    return <p>로딩중</p>;
+  }
+  if (isError) {
+    return <p>에러남.. 새로고침 하세요..</p>;
+  }
+
+  const { pokemonId, types, imgUrl, flavorText, name, catchDate } = data;
 
   const catchPokemonBtnHandler = async () => {
     const newPokemon = {
-      userId,
+      userId: loginUserId,
       id: uuid(),
-      ...pokemon,
+      ...data,
     };
-    try {
-      await axios.post(
-        `${process.env.REACT_APP_AXIOS_URL}/pokemons`,
-        newPokemon
-      );
-      dispatch(catchPokemon(newPokemon));
-      dispatch(closeModal());
-    } catch (error) {}
+
+    mutation.mutate(newPokemon);
+
+    dispatch(closeModal());
   };
 
   return (
@@ -86,7 +102,7 @@ const CatchModal = () => {
       </STModalBox>
       <STModalBackColor
         onClick={() => {
-          alert(`${name}를 놓아주거나 잡아주세요!`);
+          // alert(`${name}를 놓아주거나 잡아주세요!`);
         }}
       ></STModalBackColor>
     </>

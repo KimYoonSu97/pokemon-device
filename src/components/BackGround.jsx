@@ -1,12 +1,12 @@
 import React from "react";
 import { styled } from "styled-components";
 
-const BackGround = ({ page, user }) => {
+const BackGround = ({ point, user }) => {
   return (
     <>
-      <STMosterBallContainer page={page ? page : ""}>
-        <STMonsterBall page={page ? page : ""}></STMonsterBall>
-        <STMonsterBall page={page ? page : ""}></STMonsterBall>
+      <STMosterBallContainer point={point ? point : ""}>
+        <STMonsterBall point={point ? point : ""}></STMonsterBall>
+        <STMonsterBall point={point ? point : ""}></STMonsterBall>
       </STMosterBallContainer>
       <STBackColor user={user ? user : ""}></STBackColor>
     </>
@@ -33,7 +33,7 @@ const STBackColor = styled.div`
 
 const STMosterBallContainer = styled.div`
   width: ${(props) => {
-    switch (props.page) {
+    switch (props.point) {
       case "doc":
         return `calc(100vw * 0.6)`;
 
@@ -44,7 +44,7 @@ const STMosterBallContainer = styled.div`
   height: 360px;
   position: fixed;
   top: ${(props) => {
-    switch (props.page) {
+    switch (props.point) {
       case "doc":
         return `calc(100vh / 2 - 75px)`;
 
@@ -53,7 +53,7 @@ const STMosterBallContainer = styled.div`
     }
   }};
   left: ${(props) => {
-    switch (props.page) {
+    switch (props.point) {
       case "doc":
         return `calc((100vw - (100vw * 0.6)) / 2)`;
 
@@ -68,7 +68,7 @@ const STMosterBallContainer = styled.div`
 
 const STMonsterBall = styled.div`
   width: ${(props) => {
-    switch (props.page) {
+    switch (props.point) {
       case "doc":
         return "150px";
 
@@ -77,7 +77,7 @@ const STMonsterBall = styled.div`
     }
   }};
   height: ${(props) => {
-    switch (props.page) {
+    switch (props.point) {
       case "doc":
         return "150px";
 

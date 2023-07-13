@@ -4,12 +4,25 @@ import { styled } from "styled-components";
 import { Btn } from "../btn.styled";
 import { useDispatch } from "react-redux";
 import { closeModal } from "../../redux/modules/modalSlice";
-import axios from "axios";
-import { releasePokemon } from "../../redux/modules/pokemonSlice";
-import { deleteDiary } from "../../redux/modules/diarySlice";
+import { useMutation, useQueryClient } from "react-query";
+import { releasePokemon } from "../../api/fetchPokemon";
+import { deleteDiary } from "../../api/fetchData";
 
 const ConfirmModal = ({ setIsOpen, pokemonId, diaryId }) => {
   const dispatch = useDispatch();
+  const queryClient = useQueryClient();
+  const release = useMutation(releasePokemon, {
+    onSuccess: () => {
+      console.log("성공");
+      queryClient.invalidateQueries("getPokemonsData");
+    },
+  });
+  const deleteDiaryFunc = useMutation(deleteDiary, {
+    onSuccess: () => {
+      console.log("성공");
+      queryClient.invalidateQueries("getDiaryData");
+    },
+  });
 
   const text = () => {
     if (pokemonId) {
@@ -38,15 +51,9 @@ const ConfirmModal = ({ setIsOpen, pokemonId, diaryId }) => {
             state="disable"
             onClick={async () => {
               if (pokemonId) {
-                dispatch(releasePokemon(pokemonId));
-                await axios.delete(
-                  `${process.env.REACT_APP_AXIOS_URL}/pokemons/${pokemonId}`
-                );
+                release.mutate(pokemonId);
               } else if (diaryId) {
-                dispatch(deleteDiary(diaryId));
-                await axios.delete(
-                  `${process.env.REACT_APP_AXIOS_URL}/diary/${diaryId}`
-                );
+                deleteDiaryFunc.mutate(diaryId);
               }
               dispatch(closeModal());
             }}
