@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const UserCard = ({ user }) => {
   return (
-    <Link to={`/${user.id}`}>
+    <Link to={`/doc/${user.id}`}>
       <UserBox>
         <UserInfoBox>
           <UserImgBox>

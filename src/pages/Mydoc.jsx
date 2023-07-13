@@ -1,84 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BackGround from "../components/BackGround";
 import { styled } from "styled-components";
 import { Btn } from "../components/btn.styled";
 import PokemonList from "../components/main/PokemonList";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { openModal } from "../redux/modules/modalSlice";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { setPokemons } from "../redux/modules/pokemonSlice";
-import { setCurrentUser } from "../redux/modules/userSlice";
-import { setDiary } from "../redux/modules/diarySlice";
-import { dataFetch } from "../api-test/Pokemon";
-import { setCatchPokemon } from "../redux/modules/pokemonCatchSlice";
 import DocUserInfo from "../components/main/DocUserInfo";
 import CommentList from "../components/main/CommentList";
 import { useParams } from "react-router-dom";
+import Cookies from "universal-cookie";
+import useTokenCheck from "../hooks/useCheckToken";
 
 const Mydoc = () => {
+  const { tokenChecker } = useTokenCheck();
+
+  const cookies = new Cookies();
+
   const param = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const loginUserId = useSelector((state) => {
-    return state.loginUserReducer.id;
-  });
 
   const CatchModalHandler = async () => {
-    const newPokemon = await dataFetch();
-    if (newPokemon) {
-      dispatch(setCatchPokemon(newPokemon));
-      dispatch(
-        openModal({
-          modalType: "CatchModal",
-          isOpen: true,
-        })
-      );
-    } else {
-      CatchModalHandler();
-    }
-  };
-
-  const getUserData = async (userId) => {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_AXIOS_URL}/users?id=${userId}`
+    dispatch(
+      openModal({
+        modalType: "CatchModal",
+        isOpen: true,
+      })
     );
-    dispatch(setCurrentUser(...data));
   };
-
-  const getPokemonsData = async (userId) => {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_AXIOS_URL}/pokemons?userId=${userId}`
-    );
-    dispatch(setPokemons(data));
-  };
-
-  const getDiaryData = async (userId) => {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_AXIOS_URL}/diary?userId=${userId}`
-    );
-    dispatch(setDiary(data));
-  };
-
-  useEffect(() => {
-    let userId = loginUserId;
-    if (param.id) {
-      userId = param.id;
-    }
-
-    const fetchDatas = async () => {
-      await axios.all([
-        getUserData(userId),
-        getPokemonsData(userId),
-        getDiaryData(userId),
-      ]);
-    };
-    fetchDatas();
-  }, [param]);
 
   const returnMydoc = () => {
     if (param) {
-      navigate("/");
+      navigate("/doc");
     }
   };
 
@@ -100,9 +54,20 @@ const Mydoc = () => {
           {param.id ? (
             ""
           ) : (
-            <Btn state="red" onClick={CatchModalHandler}>
-              새로운 포켓몬 잡기
-            </Btn>
+            <>
+              <Btn state="red" onClick={CatchModalHandler}>
+                새로운 포켓몬 잡기
+              </Btn>
+              <Btn
+                state="disable"
+                onClick={() => {
+                  navigate("/");
+                  cookies.remove("jwt_token");
+                }}
+              >
+                로그아웃
+              </Btn>
+            </>
           )}
           <Btn
             state={btnColor()}
@@ -110,16 +75,16 @@ const Mydoc = () => {
               navigate("/trainer");
             }}
           >
-            트레이너 랭킹
+            트레이너 목록
           </Btn>
         </STBtnArea>
         <PokemonList></PokemonList>
         <CommentList></CommentList>
       </STInner>
       {param.id ? (
-        <BackGround page="doc" user="another"></BackGround>
+        <BackGround point="doc" user="another"></BackGround>
       ) : (
-        <BackGround page="doc"></BackGround>
+        <BackGround point="doc"></BackGround>
       )}
     </>
   );

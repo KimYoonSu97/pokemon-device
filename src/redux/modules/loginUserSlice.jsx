@@ -14,9 +14,10 @@ const loginUserSlice = createSlice({
   initialState,
   reducers: {
     setLoginUser: (state, action) => {
-      return;
+      return (state = action.payload);
     },
   },
 });
 
 export default loginUserSlice.reducer;
+export const { setLoginUser } = loginUserSlice.actions;

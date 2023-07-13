@@ -2,17 +2,35 @@ import React from "react";
 import CommentCard from "./CommentCard";
 import CommentInputForm from "./CommentInputForm";
 import { styled } from "styled-components";
-import { useSelector } from "react-redux";
+import useLoginUserId from "../../hooks/useGetUserId";
+import { getDiaryData } from "../../api/fetchData";
+import { useParams } from "react-router-dom";
+import { useQuery } from "react-query";
 
 const CommentList = () => {
-  const { diarys, loginUserId } = useSelector((state) => ({
-    diarys: state.diaryReducer,
-    loginUserId: state.loginUserReducer.id,
-  }));
+  const { loginUserId } = useLoginUserId();
+  const param = useParams();
+  let id;
+  if (param.id) {
+    id = param.id;
+  } else {
+    id = loginUserId;
+  }
+
+  const { isLoading, isError, data } = useQuery(["getDiaryData", id], () =>
+    getDiaryData(id)
+  );
+
+  if (isLoading) {
+    return <p>로딩중</p>;
+  }
+  if (isError) {
+    return <p>에러남.. 새로고침 하세요..</p>;
+  }
 
   return (
     <Inner>
-      {diarys[0]?.userId === loginUserId ? (
+      {!param.id ? (
         <>
           <Title>일기쓰기</Title>
           <CommentInputForm></CommentInputForm>
@@ -21,7 +39,7 @@ const CommentList = () => {
         ""
       )}
       <Title>지난 일기</Title>
-      {diarys?.map((diary) => {
+      {data?.map((diary) => {
         return <CommentCard key={diary.id} diary={diary}></CommentCard>;
       })}
       <EmptyBox></EmptyBox>

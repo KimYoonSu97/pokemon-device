@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 import { useDispatch } from "react-redux";
 import { openModal } from "../../redux/modules/modalSlice";
 import { setDetailPokemon } from "../../redux/modules/pokemonCatchSlice";
-import { getDayCount } from "../../fucntions/getDate";
+import { getDayCount } from "../../function/getDate";
 
 const PokemonCard = ({ pokemon }) => {
   const dispatch = useDispatch();
