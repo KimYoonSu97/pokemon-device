@@ -8,7 +8,8 @@ import { useParams } from "react-router-dom";
 
 const PokemonList = () => {
   const param = useParams();
-  const { loginUserId } = useLoginUserId();
+  // const { loginUserId } = useLoginUserId();
+  const loginUserId = 2;
   let id;
   if (param.id) {
     id = param.id;

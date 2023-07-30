@@ -6,8 +6,8 @@ import CommentInputForm from "./CommentInputForm";
 import useLoginUserId from "../../hooks/useGetUserId";
 
 const CommentCard = ({ diary }) => {
-  const { loginUserId } = useLoginUserId();
-
+  // const { loginUserId } = useLoginUserId();
+  const loginUserId = 2;
   const [isOpen, setIsOpen] = useState(false);
   const [editIsOpen, setEditIsOpen] = useState(false);
 

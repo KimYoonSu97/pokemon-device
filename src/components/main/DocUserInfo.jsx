@@ -6,7 +6,8 @@ import useLoginUserId from "../../hooks/useGetUserId";
 import { useParams } from "react-router-dom";
 
 const DocUserInfo = () => {
-  const { loginUserId } = useLoginUserId();
+  // const { loginUserId } = useLoginUserId();
+  const loginUserId = 2;
   const param = useParams();
   let id;
   if (param.id) {

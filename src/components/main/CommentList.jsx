@@ -8,7 +8,8 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 
 const CommentList = () => {
-  const { loginUserId } = useLoginUserId();
+  // const { loginUserId } = useLoginUserId();
+  const loginUserId = 2;
   const param = useParams();
   let id;
   if (param.id) {

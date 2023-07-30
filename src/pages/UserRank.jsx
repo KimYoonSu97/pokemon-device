@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import useTokenCheck from "../hooks/useCheckToken";
 
 const UserRank = () => {
-  const { tokenChecker } = useTokenCheck();
+  // const { tokenChecker } = useTokenCheck();
 
   const navigate = useNavigate();
   const returnMydoc = () => {

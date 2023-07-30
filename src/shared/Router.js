@@ -12,9 +12,9 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         {/* <Route path="/modal" element={}></Route> */}
-        <Route path="/" element={<Login />}></Route>
-        <Route path="/signup" element={<SignUp />}></Route>
-        <Route path="/start" element={<UserSetting />}></Route>
+        {/* <Route path="/" element={<Login />}></Route> */}
+        {/* <Route path="/signup" element={<SignUp />}></Route> */}
+        {/* <Route path="/start" element={<UserSetting />}></Route> */}
         <Route path="/doc" element={<Mydoc />}></Route>
         <Route path="/doc/:id" element={<Mydoc />}></Route>
         <Route path="/trainer" element={<UserRank />}></Route>

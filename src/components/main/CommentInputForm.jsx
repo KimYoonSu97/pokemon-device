@@ -8,7 +8,8 @@ import useLoginUserId from "../../hooks/useGetUserId";
 import { postDiary, editDiary } from "../../api/fetchData";
 
 const CommentInputForm = ({ editingDiary }) => {
-  const { loginUserId } = useLoginUserId();
+  // const { loginUserId } = useLoginUserId();
+  const loginUserId = 2;
   const queryClient = useQueryClient();
   const post = useMutation(postDiary, {
     onSuccess: () => {

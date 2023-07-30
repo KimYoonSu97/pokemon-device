@@ -13,7 +13,7 @@ import Cookies from "universal-cookie";
 import useTokenCheck from "../hooks/useCheckToken";
 
 const Mydoc = () => {
-  const { tokenChecker } = useTokenCheck();
+  // const { tokenChecker }  = useTokenCheck();
 
   const cookies = new Cookies();
 

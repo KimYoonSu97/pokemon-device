@@ -10,8 +10,7 @@ import { closeModal } from "../../redux/modules/modalSlice";
 import useLoginUserId from "../../hooks/useGetUserId";
 
 const DetailModal = () => {
-  const { loginUserId } = useLoginUserId();
-
+  const loginUserId = 2;
   const { pokemon } = useSelector((state) => ({
     pokemon: state.pokemonCatchReducer,
   }));

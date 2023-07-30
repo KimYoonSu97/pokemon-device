@@ -15,7 +15,7 @@ import { useMutation } from "react-query";
 const CatchModal = () => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
-  const { loginUserId } = useLoginUserId();
+  const loginUserId = 2;
   const [isOpen, setIsOpen] = useState(false);
 
   const { isFetching, isLoading, isError, data } = useQuery(

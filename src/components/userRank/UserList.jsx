@@ -6,8 +6,7 @@ import { getAllUser } from "../../api/fetchData";
 import useLoginUserId from "../../hooks/useGetUserId";
 
 const UserList = () => {
-  const { loginUserId } = useLoginUserId();
-
+  const loginUserId = 2;
   const { isLoading, isError, data } = useQuery("allUsers", getAllUser);
 
   if (isLoading) {
